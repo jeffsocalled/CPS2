@@ -10,8 +10,8 @@ terraform {
 
 provider "aws" {
  region = "us-east-2"
- access_key = "cc"
- secret_key = "cc"
+ access_key = "cccc"
+ secret_key = "NBfwvNR"
 }
 
 resource "aws_vpc" "Prj2-VPC" {
@@ -117,7 +117,7 @@ resource "aws_instance" "Master-controller" {
 
 resource "aws_instance" "Kube-Master" {
  ami           = "ami-05fb0b8c1424f266b"
- instance_type = "t2.micro"
+ instance_type = "t2.medium"
  key_name = "Ohio-Pem"
  vpc_security_group_ids = [aws_security_group.ingress-all-test.id]
  tags = {
