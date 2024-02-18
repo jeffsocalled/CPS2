@@ -1,0 +1,31 @@
+---
+  - name: Update all packages
+    apt:
+     name: "*"
+     state: latest
+    become: yes
+
+  - name: download jenkins key
+    become: yes
+    ansible.builtin.get_url:
+     url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+     dest: /usr/share/keyrings/jenkins-keyring.asc
+
+  - name: Add Jenkins repo
+    become: yes
+    ansible.builtin.apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/
+      state: present
+      filename: jenkins.list 
+
+  - name: Install the Jenkins
+    become: yes
+    ansible.builtin.apt:
+      name: jenkins
+      state: present 
+
+  - name: Make sure a service unit is running
+    ansible.builtin.systemd:
+      state: started
+      name: jenkins
+      enabled: yes

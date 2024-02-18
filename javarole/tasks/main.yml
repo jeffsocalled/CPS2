@@ -1,0 +1,3 @@
+---
+# tasks file for javarole
+ - include_tasks: java_instal.yml

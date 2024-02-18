@@ -1,0 +1,3 @@
+---
+# tasks file for jenkinsrole
+ - include_tasks : jenkins_instal.yml

@@ -1,0 +1,7 @@
+[MasterController]
+ubuntu@18.190.82.120
+[KubeMaster]
+ubuntu@3.136.186.144
+[KubeWorkers]
+ubuntu@3.141.119.228
+ubuntu@3.23.73.54

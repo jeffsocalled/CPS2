@@ -1,0 +1,4 @@
+---
+ - name : java-installation
+   become: true
+   apt: name=openjdk-17-jdk update_cache=yes state=latest

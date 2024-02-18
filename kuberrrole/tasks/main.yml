@@ -1,0 +1,3 @@
+---
+# tasks file for kuberrrole
+ - include_tasks: kubernetes_instal.yml

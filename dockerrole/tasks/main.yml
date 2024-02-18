@@ -1,0 +1,4 @@
+---
+# tasks file for containersrole
+ - include_tasks: docker_instal.yml
+    

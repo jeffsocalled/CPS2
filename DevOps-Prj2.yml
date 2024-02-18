@@ -1,0 +1,26 @@
+---
+
+- name: Kubernetes installation
+  hosts: KubeWorkers:KubeMaster
+  become: true
+  roles:
+   - kuberrrole
+
+- name: java installation
+  hosts: MasterController:KubeMaster
+  become: true
+  roles:
+   - javarole
+
+- name: jenkins installation
+  hosts: MasterController
+  become: true
+  roles:
+   - jenkinsrole
+
+- name: Docker installation
+  hosts: KubeWorkers:KubeMaster
+  become: true
+  roles:
+   - dockerrole
+

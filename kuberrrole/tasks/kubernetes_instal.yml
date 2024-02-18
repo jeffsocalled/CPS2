@@ -1,0 +1,51 @@
+---
+ - name: Update apt package cache
+   apt:
+    update_cache: yes
+
+ - name: Install required packages
+   apt:
+    name: 
+     - apt-transport-https
+     - ca-certificates
+     - curl
+     - software-properties-common
+
+ - name: Add Kubernetes GPG key
+   apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+ - name: Add Kubernetes apt repository
+   apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
+ - name: Update apt package cache again
+   apt:
+    update_cache: yes
+
+ - name: Install Kubernetes components
+   apt:
+    name: 
+     - kubelet
+     - kubeadm
+     - kubectl
+    state: present
+
+# - name: Initialize Kubernetes cluster
+#   command: kubeadm init
+
+# - name: Set up kubectl for the regular user
+#   become_user: "ubuntu"
+#   command: "{{ item }}"
+#   with_items:
+#    - mkdir -p $HOME/.kube
+#    - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+#    - sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# - name: Install network plugin (e.g., Calico)
+#   become_user: "ubuntu"
+#   command: "kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml"
+
+ 
