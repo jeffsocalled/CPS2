@@ -58,5 +58,5 @@ curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/ca
    24  sudo systemctl restart containerd
    25  sudo systemctl enable containerd
    26  sudo apt-mark hold kubelet kubeadm kubectl
-   28  sudo kubeadm join 3.12.49.96:6443 --token pr6k0i.qmac9ej3dc7otjr9 	--discovery-token-ca-cert-hash sha256:1ab895acab5a03c97baf91a0f281c1adffa5095051c6c6b84e3a294ba59446d3
+   28  sudo kubeadm join 3.12.49.96:6443 --token pr6k0i.qmac9ej3dc7otjr9 	--discovery-token-ca-cert-hash sha256:1ab8a294ba59446d3
    29  history

@@ -8,12 +8,6 @@ terraform {
  required_version = ">1.2.0"
 }
 
-provider "aws" {
- region = "us-east-2"
- access_key = "cccc"
- secret_key = "NBfwvNR"
-}
-
 resource "aws_vpc" "Prj2-VPC" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
