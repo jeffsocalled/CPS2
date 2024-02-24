@@ -1,0 +1,713 @@
+######KubeMaster
+
+ 2  java --versin
+    3  java --version
+    4  cat .ssh/authorized_keys 
+    5  ssh-keygen 
+    6  cat .ssh/id_rsa
+    7  cat .ssh/id_rsa.pub 
+    8  nano .ssh/authorized_keys 
+    9  jenkins --version
+   10  cd /home/ubuntu/
+   11  ls
+   12  cd remoting/
+   13  ls
+   14  cd logs/
+   15  ls
+   16  cd ../..
+   17  ls
+   18  kubectl get nodes
+   19  sudo tee /etc/modules-load.d/containerd.conf <<EOF
+   20  overlay
+   21  br_netfilter
+   22  EOF
+   23  sudo modprobe overlay
+   24  sudo modprobe br_netfilter
+   25  sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+   26  net.bridge.bridge-nf-call-ip6tables = 1
+   27  net.bridge.bridge-nf-call-iptables = 1
+   28  net.ipv4.ip_forward = 1
+   29  EOF
+   30  sudo sysctl --system
+   31  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   32  kubectl cluster-info
+   33  kubectl get nodes
+   34  curl https://github.com/jeffsocalled/CPS2/blob/main/deploy.yaml -O
+   35  nano deploy.yaml 
+   36  curl https://github.com/jeffsocalled/CPS2/blob/main/webservice.yaml -O
+   37  rm deploy.yaml 
+   38  curl https://github.com/jeffsocalled/CPS2/blob/main/deployment.yaml -O
+   39  crul https://github.com/jeffsocalled/CPS2/blob/main/calico.yaml -O
+   40  curl https://github.com/jeffsocalled/CPS2/blob/main/calico.yaml -O
+   41  kubectl apply -f calico.yaml 
+   42  kubectl get nodes
+   43  sudo systemctl restart docker
+   44  kubectl get nodes
+   45  sudo systemctl enable docker
+   46  kubectl get nodes
+   47  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   48  sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+   49  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+   50  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+   51  sudo apt update
+   52  sudo apt install -y containerd.io
+   53  containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+   54  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   55  sudo systemctl restart containerd
+   56  sudo systemctl enable containerd
+   57  kubectl get nodes
+   58  sudo sysctl --system
+   59  kubectl get nodes
+   60  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   61  sudo kubeadm reset
+   62  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   63  kubectl get nodees
+   64  kubectl get nodes
+   65  sudo tee /etc/modules-load.d/containerd.conf <<EOF
+   66  overlay
+   67  br_netfilter
+   68  EOF
+   69  sudo modprobe overlay
+   70  sudo modprobe br_netfilter
+   71  sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+   72  net.bridge.bridge-nf-call-ip6tables = 1
+   73  net.bridge.bridge-nf-call-iptables = 1
+   74  net.ipv4.ip_forward = 1
+   75  EOF
+   76  sudo sysctl --system
+   77  sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+   78  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/docker.gpg
+   79  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+   80  sudo apt update
+   81  sudo apt install -y containerd.io
+   82  containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+   83  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   84  sudo systemctl restart containerd
+   85  sudo systemctl enable containerd
+   86  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   87  sudo kubeadm reset
+   88  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   89  kubectl get n odes
+   90  kubectl get nodes
+   91  systemctl st
+   92  systemctl restart kubectl
+   93  sudo systemctl restart kubectl
+   94  kubectl get nodes
+   95  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   96  sudo kubeadm reset
+   97  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+   98  kubectl 
+   99  mkdir -p $HOME/.kube   
+  100  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config   
+  101  sudo chown $(id -u):$(id -g) $HOME/.kube/confi
+  102  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+  103  sudo kubeadm reset
+  104  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+  105  mkdir -p $HOME/.kube
+  106  kubectl get nodes
+  107  kubectl get deployment
+  108  kubectl get deployments
+  109  kubectl get nodes
+  110  kubectl apply -f calico.yaml 
+  111  rm calico.yaml 
+  112  kubectl get nodes
+  113  curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+  114  kubectl apply -f calico.yaml 
+  115  kubectl get nodes
+  116  kubectl apply -f deployment.yaml 
+  117  rm deployment.yaml 
+  118  nano deployment.yaml
+  119  kubectl apply -f deployment.yaml 
+  120  nano webservice.yaml
+  121  vi webservice.yaml 
+  122  nano webservice.yaml 
+  123  kubectl apply -f webservice.yaml 
+  124  kubectl get nodes
+  125  kubectl get services
+  126  kubectl port-forward service/website-service 8080:80
+  127  sudo kubeadm init
+  128  sudo kubeadm reset
+  129  sudo kubeadm init --control-plane-endpoint3.135.168.146
+  130  kebectl get nodes
+  131  kubectl get nodes
+  132  sudo kubeadm init --control-plane-endpoint3.135.168.146
+  133  sudo kubeadm init --control-plane-endpoint=3.135.168.146
+  134  mkdir -p $HOME/.kube
+  135  kubectl get nodes
+  136  kubectl apply deployment.yaml 
+  137  kubectl apply calico.yaml 
+  138  kubectl apply -f calico.yaml 
+  139  kubectl apply -f deployment.yaml 
+  140  kubectl apply -f webservice.yaml 
+  141  kubectl get deployments
+  142  kubectl get services
+  143  kubectl get status
+  144  kubectl describe
+  145  kubectl describe deployments
+  146  kubectl get nodes -o wide
+  147  wget 10.0.38.66:3008
+  148  kubectl get nodes -o wide
+  149  kubectl get service
+  150  wget 10.105.186.148:8080
+  151  wget 10.96.0.1:30008
+  152  wget 10.105.186.148:30008
+  153  wget 10.96.0.1:30008
+  154  kubectl get nodes
+  155  docker ps -a
+  156  sudo apt install docker.io
+  157  sudo apt remove containerd.io
+  158  kubectl get nodes
+  159  docker ps -a
+  160  kubectl apply -f deployment.yaml 
+  161  kubectl apply -f webservice.yaml 
+  162  kubectl get deploymens
+  163  kubectl get deployments
+  164  kubectl get services
+  165  kubectl get pods
+  166  wget 10.96.0.1:30008
+  167  wget 10.105.186.148
+  168  cat index.html 
+  169  kubectl port-forward service/website-service 8080:80 &
+  170  kubectl port-forward service/website-service 8080:80
+  171  kubectl get pods
+  172  kubectl get deployments
+  173  kubectl get pods
+  174  wget 10.105.186.148
+  175  kubectl port-forward service/website-service 8080:80
+  176  docker login -u jeffsocalled514 -p Preisha@0709
+  177  ls
+  178  nano Dockerfile
+  179  docker build -t jeffsocalled/website
+  180  docker build -t jeffsocalled/website .
+  181  docker build -t jeffsocalled514/website .
+  182  ls
+  183  git clone https://github.com/jeffsocalled/website.git
+  184  docker build -t jeffsocalled514/website .
+  185  docker push jeffsocalled514/website
+  186  vi website/index.html 
+  187  nano deployment.yaml 
+  188  kubectl apply -f deployment.yaml 
+  189  ls
+  190  cd /home/ubuntu/workspace/Build-dockerimage
+  191  ls
+  192  docker images
+  193  docker login -u jeffsocalled514 -p Preisha@0709
+  194  docker rm $(docker ps -aq)
+  195  docker images
+  196  docker image prune --all --force
+  197  docker images
+  198  ls
+  199  docker images
+  200  docker ps -a
+  201  docker images
+  202  ls
+  203  rm -rf website
+  204  cat Dockerfile 
+  205  pwd
+  206  ls
+  207  docker build -t jeffsocalled514/website /home/ubuntu/workspace/Build-dockerimage/
+  208  docker images
+  209  docker push jeffsocalled514/website
+  210  ls
+  211  cat Dockerfile 
+  212  ls
+  213  rm -rf *
+  214  ls
+  215  docker images
+  216  ls
+  217  docker images
+  218  ls
+  219  cd /home/ubuntu/workspace/
+  220  cd Build-dockerimage
+  221  ls
+  222  rm -rf *
+  223  ls
+  224  cat Dockerfile 
+  225  ll
+  226  cat Dockerfile 
+  227  ls
+  228  docker images
+  229  pwd
+  230  ls
+  231  cd /home/ubuntu/workspace/Deploy-website
+  232  ls
+  233  rm -rf *
+  234  cd /home/ubuntu/workspace/Deploy-website
+  235  ls
+  236  nano deployment.yaml 
+  237  kubectl apply -f deployment.yaml 
+  238  nano deployment.yaml 
+  239  docker ps -a
+  240  containerd
+  241  cd /home/ubuntu/workspace/Build-dockerimage
+  242  ls
+  243  nano index.html 
+  244  nano deployment.yaml 
+  245  docker ps -a
+  246  kubectl get nodes
+  247  kubectl get deployments
+  248  crictl rmi --prune
+  249  crictl 
+  250  crictl ps
+  251  crictl stats
+  252  crictl pods
+  253  docker
+  254  docker ps -a
+  255  docker container
+  256  docker container ls
+  257  kubectl apply deployment.yaml 
+  258  kubectl apply -f deployment.yaml 
+  259  #kubectl rollout restart deployment/
+  260  kubectl get deployments
+  261  kubectl rollout restart deployment/website-deployment
+  262  nano deployment.yaml 
+  263  kubectl rollout restart deployment/website-deployment
+  264  kubectl get pods
+  265  nano deployment.yaml 
+  266  kubectl rollout restart deployment/website-deployment
+  267  kubectl get pods
+  268  kubectl apply -f deployment.yaml 
+  269  kubectl get pods
+  270  nano deployment.yaml 
+  271  kubectl apply -f deployment.yaml 
+  272  kubectl get pods
+  273  cd /home/ubuntu/workspace/Build-dockerimage
+  274  ls
+  275  docker images
+  276  ls
+  277  docker build -t jeffsocalled514/website:v2 .
+  278  docker images
+  279  docker push jeffsocalled514/website:v2
+  280  nano deployment.yaml 
+  281  kubectl apply -f deployment.yaml 
+  282  history
+
+
+##### Kube worker1
+
+    1  kubeadm join 3.135.168.146:6443 --token etk9bf.jptshm7ed991dvvk 	--discovery-token-ca-cert-hash sha256:08efeb81432f017de60015d03eeae65631ed4e7e2507df2da7d84f9fb179cb86
+    2  sudo kubeadm join 3.135.168.146:6443 --token etk9bf.jptshm7ed991dvvk 	--discovery-token-ca-cert-hash sha256:08efeb81432f017de60015d03eeae65631ed4e7e2507df2da7d84f9fb179cb86
+    3  sudo kubeadm reset
+    4  sudo kubeadm join 3.135.168.146:6443 --token etk9bf.jptshm7ed991dvvk 	--discovery-token-ca-cert-hash sha256:08efeb81432f017de60015d03eeae65631ed4e7e2507df2da7d84f9fb179cb86
+    5  kubeadm join 3.135.168.146:6443 --token pbbkmk.iwrion8qyukw00e3 	--discovery-token-ca-cert-hash sha256:11a78a7474525081db63c1433eb17c93923c20a727b69071ff597b3da229882c
+    6  sudo kubeadm join 3.135.168.146:6443 --token pbbkmk.iwrion8qyukw00e3 	--discovery-token-ca-cert-hash sha256:11a78a7474525081db63c1433eb17c93923c20a727b69071ff597b3da229882c
+    7  sudo kubeadmn reset
+    8  sudo kubeadm reset
+    9  sudo kubeadm join 3.135.168.146:6443 --token pbbkmk.iwrion8qyukw00e3 	--discovery-token-ca-cert-hash sha256:11a78a7474525081db63c1433eb17c93923c20a727b69071ff597b3da229882c
+   10  history
+
+
+
+#######Kube Worker2
+
+    1  sudo kubeadm join 3.135.168.146:6443 --token etk9bf.jptshm7ed991dvvk 	--discovery-token-ca-cert-hash sha256:08efeb81432f017de60015d03eeae65631ed4e7e2507df2da7d84f9fb179cb86
+    2  sudo kubeadm reset
+    3  sudo kubeadm join 3.135.168.146:6443 --token etk9bf.jptshm7ed991dvvk 	--discovery-token-ca-cert-hash sha256:08efeb81432f017de60015d03eeae65631ed4e7e2507df2da7d84f9fb179cb86
+    4  sudo kubeadm reset
+    5  sudo kubeadm join 3.135.168.146:6443 --token pbbkmk.iwrion8qyukw00e3 	--discovery-token-ca-cert-hash sha256:11a78a7474525081db63c1433eb17c93923c20a727b69071ff597b3da229882c
+
+
+
+
+####Devops VM
+
+ 613  ansible all -i "18.222.12.178,3.132.110.87," -u ubuntu --private-key=./ohio.pe -m authorized_key -a "user=ubuntu key=$(cat /home/praveen/.ssh/id_rsa.pub)"
+  614  ansible all -i "18.222.12.178,3.132.110.87," -u ubuntu --private-key=./ohio.pem
+  615  ansible all -iv "18.222.12.178,3.132.110.87," -u ubuntu --private-key=./ohio.pem
+  616  ansible all -i "18.222.12.178,3.132.110.87," --private-key=./ohio.pem -m authorized_key -a "user=ubuntu key=$(cat /home/praveen/.ssh/id_rsa.pub)" -e "ansible_user=ubuntu"
+  617  ansible all -i "18.222.12.178,3.132.110.87," --private-key=./ohio.pem -m authorized_keys -a "user=ubuntu key=$(cat /home/praveen/.ssh/id_rsa.pub)" -e "ansible_user=ubuntu"
+  618  ansible all -i "18.222.12.178,3.132.110.87," -u ubuntu --private-key=./ohio.pe -m authorized_keys -a "user=ubuntu key=$(cat /home/praveen/.ssh/id_rsa.pub)"
+  619  ansible all -i "10.0.37.18,10.0.46.4,10.0.39.2,10.0.49.232," --private-key=./ohio.pem -m ansible.builtin.user -a "name=ubuntu generate_ssh_key=yes" -e "ansible_user=ubuntu"
+  620  ansible all -i "10.0.37.18,10.0.46.4,10.0.39.2,10.0.49.232," --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  621  ansible all -i "10.0.37.18,10.0.46.4,10.0.39.2,10.0.49.232," --private-key=./ohio.pem -m ansible.builtin.user -a "name=ubuntu generate_ssh_key=yes" -e "ansible_user=ubuntu"
+  622  terraform ouput
+  623  terraform output
+  624  ansible all -i "18.222.12.178,3.132.110.87," --private-key=./ohio.pem -m ansible.builtin.user -a "name=ubuntu generate_ssh_key=yes" -e "ansible_user=ubuntu"
+  625  ansible all -m ping
+  626  ansible all -m ping -i "18.222.12.178,3.132.110.87,"
+  627  ansible all -i "18.222.12.178,3.132.110.87," --private-key=./ohio.pem -m ansible.builtin.user -a "name=ubuntu generate_ssh_key=yes" -e "ansible_user=ubuntu"
+  628  ssh ubuntu@3.132.110.87
+  629  ssh -i ohio.pem ubuntu@3.132.110.87
+  630  scp -i ohio.pem ubuntu@3.132.110.87:/home/ubuntu/.ssh/auth* .
+  631  ls
+  632  vi authorized_keys 
+  633  scp -i ohio.pem ubuntu@3.132.110.87:/home/ubuntu/.ssh/authorized_keys .
+  634  cat ohio.pem 
+  635  cat ohio.pem >> authorized_keys 
+  636  cp authorized_keys authorized_keys_1
+  637  terraform outpu
+  638  ssh ubuntu@3.132.110.87
+  639  scp -i ohio.pem authorized_keys ubuntu@3.132.110.87:/home/ubuntu/.ssh/
+  640  ssh ubuntu@3.132.110.87
+  641  cat authorized_keys
+  642  vi authorized_keys
+  643  cat /home/praveen/.ssh/id_rsa.pub >> authorized_keys
+  644  scp -i ohio.pem authorized_keys ubuntu@3.132.110.87:/home/ubuntu/.ssh/
+  645  ssh-i ohio.pem ubuntu@3.132.110.87 "
+  646  terraform output
+  647  ansible all -i "18.222.12.178,3.23.184.172,18.116.187.67,," --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  648  ssh ubunt@18.222.12.178
+  649  ssh ubuntu@18.222.12.178
+  650  terraform output
+  651  ansible all -i "18.222.12.178,3.23.184.172,18.116.187.67,3.132.110.87," --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  652  ansible all -i "18.222.12.178,3.23.184.172,18.116.187.67,3.132.110.87," -m ping
+  653  ansible all -i "18.222.12.178,3.23.184.172,18.116.187.67,3.132.110.87," -m ping -e "ansible_user=ubuntu"
+  654  ansible all -i "18.222.12.178,3.23.184.172,18.116.187.67,3.132.110.87," --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  655  cat hosts-proj2 
+  656  vi config_hosts_file.sh
+  657  chmod +x config_hosts_file.sh
+  658  nano config_hosts_file.sh 
+  659  ./config_hosts_file.sh 
+  660  cat config_hosts_file.sh 
+  661  terraform output -raw public_ips["Master-controller"]
+  662  terraform output -raw public_ips["Master-Controller"]
+  663  terraform outpu
+  664  terraform output
+  665  terraform output -raw public_ips["Master-controller"]
+  666  terraform output -raw public_ips[]
+  667  terraform output -raw public_ips
+  668  terraform output -raw
+  669  terraform output public_ips
+  670  terraform output -raw public_ips["Kube-Master"]
+  671  terraform output -raw public_ips[1]
+  672  terraform output -json public_ips["Kube-Master"]
+  673  terraform output -json public_ips "Kube-Master"
+  674  terraform output -help
+  675  terraform output -raw public_ips
+  676  terraform output -json public_ips
+  677  terraform output -raw public_ips
+  678  terraform output -raw public_ips "Kube-Master"
+  679  terraform output -raw public_ips{"Kube-Master"}
+  680  terraform output -raw public_ips["Kube-Master"]
+  681  terraform output -raw public_ips ["Kube-Master"]
+  682  terraform output -raw public_ips.1
+  683  terraform output public_ips
+  684  terraform output -raw public_ips | jq -r .["Kube-Worker2"]
+  685  terraform output -raw public_ips | grep "Kube-Worker2" | awk '{print $2}'
+  686  terraform output -json public_ips | jq -r '.["Kube-Worker2"]'
+  687  gedit config_hosts_file.sh 
+  688  ./config_hosts_file.sh 
+  689  gedit config_hosts_file.sh 
+  690  ./config_hosts_file.sh 
+  691  gedit config_hosts_file.sh 
+  692  ./config_hosts_file.sh 
+  693  nano hosts_config.txt 
+  694  gedit config_hosts_file.sh &
+  695  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  696  ./config_hosts_file.sh 
+  697  git status
+  698  git add config_hosts_file.sh 
+  699  git status
+  700  git commit -m "Added ansible ssh automation script"
+  701  git push origin main
+  702  terraform destroy
+  703  nano main.tf 
+  704  terraform plan
+  705  terraform apply
+  706  ./config_hosts_file.sh 
+  707  ansible all -m ping
+  708  ansible all -i hosts_config.txt -m ping
+  709  gedit config_hosts_file.sh 
+  710  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  711  ansible all -m ping
+  712  ansible all -i hosts_config.txt -m ping
+  713  gedit config_hosts_file.sh 
+  714  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  715  cat hosts_config.txt 
+  716  ssh ubuntu@3.14.225.59
+  717  terraform destroy
+  718  #wget ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDGCS2XglfkWvr/FFtN/2jWDVOwCG053mNg9K/3Xvy4A0JGegbKlveFoNg0nAq0Q/xWMKG67p4Sq9O3pA8GH2g/qmNs1EHXMNN9fN5LW6q41RrP5Xdi2268Rl1DKjyUXnGODKtg8cqh9NaAQemeXqaMRy6qDsjFAaOGVuVVl09Mqx6ABQ4Qkt0ZUHNrn/oULD5FMoPuvBM6tJ5dVOPkVbCkoRMLoFM62pDmbQ1N4TQXI6YAkKvKKtkcSes9WxMG+n9UOVUaFH2WWnj1+h2EWmSyNyhJlEZDr2UajEueMQeInuW4qS36JBy952ZDgOYH0+hbqdUbl/QDt7AE+cXfDksRSp7KE5AXHyplvRUkBaiF8pcSd6OiECiIC1/4pq2X84fHv1H+hODh7Fdu7xH5lZoJPQSdfIPVQnErCP3BrFcNXuBFvMxCmnD1g8xlTefxbt2T+5WW9f9fhiFhY8ME4LSA5lBu6m40
+  719  wget https://github.com/jeffsocalled/CPS2/blob/main/deploy.yaml
+  720  ls
+  721  ct deploy.yaml 
+  722  cat deploy.yaml 
+  723  nano deploy.yaml 
+  724  curl -lOfk https://github.com/jeffsocalled/CPS2/blob/main/deploy.yaml
+  725  ls
+  726  cat deploy.yaml 
+  727  nan o deploy.yaml 
+  728  nano deploy.yaml 
+  729  poweroff
+  730  cd TEST/CPS2/
+  731  terraform 
+  732  ./config_hosts_file.sh 
+  733  cd TEST/CPS2/
+  734  terraform apply
+  735  ./config_hosts_file.sh 
+  736  cat config_hosts_file.sh 
+  737  cat hosts_config.txt 
+  738  [MasterController]
+  739  ubuntu@3.130.81.250
+  740  [KubeMaster]
+  741  ubuntu@3.12.252.26
+  742  [KubeWorkers]
+  743  ubuntu@3.130.69.63
+  744  ubuntu@3.128.85.220
+  745  cat config_hosts_file.sh 
+  746  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  747  ansible all -m ping
+  748  ansible all -m ping -i hosts_config.txt
+  749  ls
+  750  nano kuberrrole/tasks/kubernetes_instal.yml 
+  751  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  752  terraform output
+  753  ssh -i ohio.pem 3.12.252.26
+  754  ssh -i ohio.pem ubuntu@3.12.252.26
+  755  terraform outpu
+  756  terraform output
+  757  ssh -i ohio.pem ubuntu@3.130.69.63
+  758  nano DevOps-Prj2.yml 
+  759  ssh -i ohio.pem ubuntu@3.12.252.26
+  760  nano DevOps-Prj2.yml 
+  761  nano javarole/tasks/main.yml
+  762  nano javarole/tasks/java_instal.yml 
+  763  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  764  ssh -i ohio.pem ubuntu@3.12.252.26
+  765  free -h
+  766  top
+  767  terraform plan
+  768  terraform outpu
+  769  terraform output
+  770  cd TEST/CPS2/
+  771  nano DevOps-Prj2.yml 
+  772  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  773  terraform output
+  774  ssh -i ohio.pem ubuntu@3.12.252.26
+  775  terraform destroy
+  776  terraform apply -auto-approve
+  777  terraform refresh
+  778  nano config_hosts_file.sh 
+  779  ./config_hosts_file.sh 
+  780  cat config_hosts_file.sh 
+  781  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  782  ansible all -m ping
+  783  ansible all -m ping -i hosts_config.txt 
+  784  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  785  terraform output
+  786  ssh -i ohio.pem ubuntu@3.135.255.61
+  787  nano DevOps-Prj2.yml 
+  788  nano kuberrrole/tasks/kubernetes_instal.yml 
+  789  nano main.tf 
+  790  terraform destroy
+  791  terraform apply
+  792  terraform refresh
+  793  nano config_hosts_file.sh 
+  794  ./config_hosts_file.sh 
+  795  cat config_hosts_file.sh 
+  796  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  797  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  798  nano kuberrrole/tasks/kubernetes_instal.yml 
+  799  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  800  terraform output
+  801  ssh -i ohio.pem 3.130.246.247
+  802  ssh -i ohio.pem ubuntu@3.130.246.247
+  803  terraform output
+  804  ssh -i ohio.pem ubuntu@3.139.226.227
+  805  terraform output
+  806  ssh -i ohio.pem ubuntu@3.19.128.125
+  807  kubeadm init
+  808  terraform output
+  809  ssh -i ohio.pem ubuntu@3.130.246.247
+  810  mkdir -p $HOME/.kube
+  811  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  812  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  813  ssh -i ohio.pem ubuntu@3.130.246.247
+  814  terraform output
+  815  ssh -i ohio.pem ubuntu@3.130.246.247
+  816  kubectl get deployments
+  817  ssh -i ohio.pem ubuntu@3.130.246.247
+  818  terraform destro -auto-approve
+  819  terraform destroy -auto-approve
+  820  poweroff
+  821  cat config_hosts_file.sh 
+  822  nano config_hosts_file.sh 
+  823  nano terraform.tfstate
+  824  terraform output
+  825  ssh -i ohio.pem ubuntu@52.15.229.27
+  826  cat deploy.yaml 
+  827  terraform output
+  828  ssh -i ohio.pem ubuntu@3.141.223.75
+  829  sudo nano /etc/hosts
+  830  ssh -i ohio.pem ubuntu@3.141.223.75
+  831  nano deploy.yaml 
+  832  cd TEST/CPS2/
+  833  terraform apply
+  834  ./config_hosts_file.sh 
+  835  cat config_hosts_file.sh 
+  836  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  837  ansible all -m ping
+  838  ansible all -m ping -i hosts_config.txt 
+  839  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  840  terraform output
+  841  ssh -i ohio.pem ubuntu@3.12.49.96
+  842  sudo sysctl --system
+  843  ssh -i ohio.pem ubuntu@3.12.49.96
+  844  terraform destroy
+  845  poweeroff
+  846  poweroff
+  847  sudo hostnamectl set-hostname "PRV_DvOps"
+  848  reset
+  849  cd TEST/CPS2/
+  850  terraform apply
+  851  ./config_hosts_file.sh 
+  852  cat config_hosts_file.sh 
+  853  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu" < "yes" "yes" "yes" "yes"
+  854  touch sayyes.txt
+  855  vi sayyes
+  856  nano sayyes.txt 
+  857  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu" < sayyes.txt
+  858  ansible all -m ping
+  859  ansible all -m ping -i hosts_config.txt -
+  860  ansible all -m ping -i hosts_config.txt
+  861  nano kuberrrole/tasks/kubernetes_instal.yml 
+  862  poweroff
+  863  nano kuberrrole/tasks/kubernetes_instal.yml 
+  864  nano dockerrole/tasks/docker_instal.yml 
+  865  nano kuberrrole/tasks/kubernetes_instal.yml 
+  866  cd ~
+  867  ls
+  868  touch kubesetup
+  869  mv kubesetup kubesetup.txt
+  870  nano kubesetup.txt 
+  871  terraform output
+  872  ssh -i ohio.pem ubuntu@18.119.94.136
+  873  nano kuberrrole/tasks/kubernetes_instal.yml 
+  874  ssh -i ohio.pem ubuntu@18.119.94.136
+  875  nano dockerrole/tasks/docker_instal.yml 
+  876  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  877  terraform outputs
+  878  terraform output
+  879  ssh -i ohio.pem ubuntu@18.119.94.136
+  880  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  881  ssh -i ohio.pem ubuntu@18.119.94.136
+  882  ssh -i ohio.pem -X ubuntu@18.119.94.136
+  883  ls
+  884  rm deploy.yaml
+  885  cat authorized_keys
+  886  ls -lrt
+  887  rm authorized_keys*
+  888  ls
+  889  scp ubuntu@18.119.94.136:/home/ubuntu/* .
+  890  git add Dockerfile K8smaster_history_24Feb24_exposed.txt calico.yaml deployment.yaml webservice.yaml 
+  891  git add config_hosts_file.sh
+  892  git add kubesetup.txt
+  893  git status
+  894  git push origin main
+  895  git pull
+  896  cat deploy.yaml 
+  897  git remove deploy.yaml
+  898  ssh -i ohio.pem -X ubuntu@18.119.94.136
+  899  free -h
+  900  top
+  901  free
+  902  cd TEST/CPS2/
+  903  terraform refresh
+  904  ssh -i ohio.pem ubuntu@3.19.110.160
+  905  nano kuberrrole/tasks/kubernetes_instal.yml 
+  906  nano dockerrole/tasks/docker_instal.yml 
+  907  nano kuberrrole/tasks/kubernetes_instal.yml 
+  908  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  909  nano dockerrole/tasks/docker_instal.yml 
+  910  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  911  nano dockerrole/tasks/docker_instal.yml 
+  912  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  913  terraform destroy
+  914  terraform apply
+  915  ./config_hosts_file.sh 
+  916  cat config_hosts_file.sh 
+  917  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  918  ansible all -m ping
+  919  ansible all -m ping -i hosts_config.txt 
+  920  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  921  nano kuberrrole/tasks/kubernetes_instal.yml 
+  922  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  923  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=18.119.94.136
+  924  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml 
+  925  terraform ouput
+  926  terraform ouputs
+  927  terraform outputs
+  928  terraform output
+  929  ssh -i ohio.pem ubuntu@3.138.97.77
+  930  terraform ouputs
+  931  terraform ouput
+  932  terraform output
+  933  ssh -i ohio.pem ubuntu@3.128.185.132
+  934  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  935  nano main.tf 
+  936  git status
+  937  nano deployment.yaml 
+  938  ls
+  939  rm deploy.yaml 
+  940  ls
+  941  git add *role
+  942  gi status
+  943  git status
+  944  git add DevOps-Prj2.yml 
+  945  vi DevOps-Prj2.yml 
+  946  git status
+  947  git push origin main
+  948  git commit -m "Updated upto k8s eposure"
+  949  ls
+  950  git config --global jeffsocalled.tech@gmail.com
+  951  git config --global user.email jeffsocalled.tech@gmail.com
+  952  git config --global user.name jeffsocalled
+  953  git push origin main
+  954  git commit -m "Updated upto k8s eposure"
+  955  git push origin main
+  956  terraform output
+  957  ssh -i ohio.pem ubuntu@3.137.4.13
+  958  ping 3.137.4.13
+  959  ssh -i ohio.pem ubuntu@3.137.4.13
+  960  rpm -qa | wc -l
+  961  rpm -qa
+  962  sudo yum remove lohit*fonts*
+  963  rpm -qa
+  964  rpm -qa | wc -l
+  965  nano main.tf 
+  966  terraform apply
+  967  terraform reresh
+  968  terraform refresh
+  969  date 022414482024
+  970  sudo date 022414482024
+  971  terraform refresh
+  972  sudo date 022415002024
+  973  terraform refresh
+  974  terraform apply
+  975  ./config_hosts_file.sh 
+  976  cat config_hosts_file.sh 
+  977  ansible all -i hosts_config.txt --private-key=./ohio.pem -m ansible.builtin.copy -a "src=/home/praveen/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/authorized_keys" -e "ansible_user=ubuntu"
+  978  nano DevOps-Prj2.yml 
+  979  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  980  ansible all -m ping
+  981  ansible all -m ping -i hosts_config.txt
+  982  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+  983  ssh -i ohio.pem 3.137.4.13
+  984  ssh -i ohio.pem ubuntu@3.137.4.13
+  985  nano main.tf 
+  986  terraform destroy
+  987  terraform refresh
+  988  terraform destroy
+  989  terraform refresh
+  990  poweroff
+  991  ls
+  992  git add main.tf 
+  993  git status
+  994  vi kubesetup.txt
+  995  git add kubesetup.txt
+  996  vi K8smaster_history_24Feb24_exposed.txt 
+  997  git status
+  998  git commit -m "Updated main.tf and setup"
+  999  git push origin main
+ 1000  cd TEST/CPS2/
+ 1001  terraform refresh
+ 1002  ssh -i ohio.pem ubuntu@3.143.177.50
+ 1003  terraform output
+ 1004  ssh -i ohio.pem ubuntu@3.143.177.50
+ 1005  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+ 1006  terraform output
+ 1007  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+ 1008  nano dockerrole/tasks/docker_instal.yml 
+ 1009  ansible-playbook -i hosts_config.txt DevOps-Prj2.yml
+ 1010  terraform output
+ 1011  ssh -i ohio.pem ubuntu@3.143.177.50
+ 1012  history
