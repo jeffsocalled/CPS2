@@ -1,0 +1,168 @@
+    1  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=18.119.94.136
+    2  sudo kubectl get nodes
+    3  kubectl get nodes
+    4  free
+    5  sudo systemctl status docker
+    6  sudo systemctl restart docker
+    7  kubectl get nodes
+    8  sudo kubeadm reset
+    9  kubectl get nodes
+   10  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=18.119.94.136
+   11  kubectl get nodes
+   12  curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+   13  nano calico.yaml 
+   14  kubectl get nodes
+   15  sudo systemctl restart docker
+   16  kubectl get nodes
+   17  nano calico.yaml 
+   18  kubectl get nodes
+   19  sudo systemctl enable docker
+   20  kubectl get nodes
+   21  sudo systemctl restart docker
+   22  kubectl get nodes
+   23  sudo systemctl enable docker
+   24  kubectl get nodes
+   25  sudo systemctl restart docker
+   26  kubectl get nodes
+   27  sudo systemctl status docker
+   28  kubectl get nodes
+   29  sudo systemctl enable containerd
+   30  sudo systemctl start containerd
+   31  kubectl get nodes
+   32  sudo tee /etc/modules-load.d/containerd.conf <<EOF
+   33  overlay
+   34  br_netfilter
+   35  EOF
+   36  sudo modprobe overlay
+   37  sudo modprobe br_netfilter
+   38  sudo tee /etc/sysctl.d/kubernetes.conf <<EOF
+   39  net.bridge.bridge-nf-call-ip6tables = 1
+   40  net.bridge.bridge-nf-call-iptables = 1
+   41  net.ipv4.ip_forward = 1
+   42  EOF
+   43  sudo sysctl --system
+   44  containerd config default | sudo tee /etc/containerd/config.toml > /dev/null 2>&1
+   45  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   46  sudo apt install -y containerd.io
+   47  containerd config default | sudo tee /etc/containerd/config.toml > /dev/null 2>&1
+   48  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   49  sudo systemctl restart containerd
+   50  sudo systemctl enable containerd
+   51  sudo apt-mark hold kubelet kubeadm kubectl
+   52  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=18.119.94.136
+   53  sudo kubeadm reset
+   54  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=18.119.94.136
+   55  kubectl get nodes
+   56  curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+   57  nano calico.yaml 
+   58  kubectl apply -f calico.yaml 
+   59  kubectl get nodes
+   60  cat /etc/sysctl.d/kubernetes.conf 
+   61  kubectl get nodes
+   62  kubectl apply -f calico.yaml 
+   63  kubectl get nodes
+   64  git clone https://github.com/hshar/website.git
+   65  ls
+   66  nano Dockerfile
+   67  ls
+   68  docker ps -a
+   69  sudo docker ps -a
+   70  docker
+   71  containerd
+   72  docker --version
+   73  sudo apt remove continerd
+   74  sudo apt remove containerd
+   75  sudo apt remove containerd.io
+   76  systemctl status docker
+   77  sudo systmctl restart docker
+   78  sudo systemctl restart docker
+   79  systemctl status docker
+   80  docker
+   81  kubectl get nodes
+   82  ls
+   83  docker build -t jeffsocalled/website:v1 .
+   84  vi Dockerfile 
+   85  ls website/
+   86  docker ps -a
+   87  docker images
+   88  vi Dockerfile 
+   89  docker build -t jeffsocalled/website:v1 .
+   90  docker images
+   91  docker build -t jeffsocalled514/website:v1 .
+   92  docker images
+   93  docker run -itd -p 80:80 jeffsocalled514/website
+   94  docker run -itd -p 80:80 jeffsocalled514/website:v1
+   95  docker ps -a
+   96  nano deployment.yaml
+   97  nano webservice.yaml
+   98  nano deployment.yaml
+   99  kubectl apply -f website-deployment.yaml
+  100  kubectl apply -f website-service.yaml
+  101  kubectl apply -f deployment.yaml 
+  102  kubectl apply -f webs
+  103  kubectl apply -f webservice.yaml 
+  104  kubectl get nodes
+  105  kubectl get pods
+  106  kubectl apply -f deployment.yaml 
+  107  nano deployment.yaml
+  108  docker login -u jeffsocalled514 -p Preisha@0709
+  109  docker push jeffsocalled514/website:v1
+  110  kubectl apply -f deployment.yaml 
+  111  kubectl apply -f webservice.yaml 
+  112  kubectl get pods
+  113  wget 3.138.97.77:3008
+  114  wget 3.138.97.77:3007
+  115  kubectl describe pods
+  116  wget ip-10-0-38-150:3008
+  117  wget ip-10-0-38-150:3007
+  118  kubectl get deployments
+  119  kubectl get pods
+  120  kubectl get services
+  121  nano calico.yaml 
+  122  sudo kubectl apply -f calico.yaml 
+  123  kubectl -f calico.yaml 
+  124  kubectl apply -f calico.yaml 
+  125  kubectl get pods
+  126  kubectl get deployments
+  127  kubectl get service
+  128  sudo kubeadm reset
+  129  kubectl apply -f calico.yaml 
+  130  sudo kubeadm init
+  131  kubectl get pods
+  132  kubectl get nodes
+  133  sudo kubeadm reset
+  134  sudo kubeadm init --control-plane-endpoint=18.119.94.136
+  135  mkdir -p $HOME/.kube
+  136  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  137  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  138  kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+  139  kubectl get nodes
+  140  ls
+  141  kubectl apply -f calico.yaml 
+  142  kubectl get pods
+  143  kubectl get service
+  144  kubectl apply -f deployment.yaml 
+  145  kubectl apply -f webs
+  146  kubectl apply -f webservice.yaml 
+  147  kubectl get service
+  148  kubectl get deployments
+  149  nano deployment.yaml 
+  150  kubectl --help
+  151  kubectl describe
+  152  kubectl describe deployments
+  153  kubectl get nodes -o wide
+  154  wget 10.0.46.30:3008
+  155  wget 
+  156  kubectl get nodes
+  157  kubectl get deplayments
+  158  kubectl get deployments
+  159  kubectl get service
+  160  wget 10.96.0.1
+  161  wget 10.96.0.1:30008
+  162  wget 10.110.223.89
+  163  cat index.html 
+  164  firefox
+  165  sudo apt install firefox
+  166  firefox
+  167  kubectl port-forward service/website-service 8080:80
+  168  history > K8smaster_history_24Feb24_exposed.txt

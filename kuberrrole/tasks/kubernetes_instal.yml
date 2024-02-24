@@ -34,12 +34,15 @@
     state: present
 
 # - name: Initialize Kubernetes cluster
-#   command: kubeadm init
-
+#   become: true
+#   command: "{{ item }}"
+#   with_items:
+#    - 
 # - name: Set up kubectl for the regular user
 #   become_user: "ubuntu"
 #   command: "{{ item }}"
 #   with_items:
+     
 #    - mkdir -p $HOME/.kube
 #    - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 #    - sudo chown $(id -u):$(id -g) $HOME/.kube/config

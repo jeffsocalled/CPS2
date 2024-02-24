@@ -1,0 +1,62 @@
+1  docker --versionon
+    2  sudo apt update
+    3  sudo apt upgrade -y
+    4  sudo reboot
+    5  sudo hostnamectl set-hostname "k8s-Master"
+   10  sudo swapoff -a
+   14  sudo tee /etc/modules-load.d/containerd.conf << EOF
+   15  overlay
+   16  br_netfilter
+   17  EOF
+   18  sudo modprobe overlay
+   19  sudo modprobe br_netfilter
+   20  sudo sysctl --system
+   21  sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificate
+   22  sudo apt install -y curl gnupg2 software-properties-common apt-transport-https ca-certificates
+   23  sudo apt install -y containerd.io
+   24  containerd config default | sudo tee /etc/containerd/config.toml > /dev/null 2>&1
+   25  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   26  sudo systemctl restart containerd
+   27  sudo systemctl enable containerd
+   33  sudo apt-mark hold kubelet kubeadm kubectl
+   44  sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --control-plane-endpoint=3.12.49.96
+   45  mkdir -p $HOME/.kube
+         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+         sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   46  kubectl get nodes
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+   49  ls
+   55  nano calico.yaml 
+   # edited the CIDR block to inlucude the cluster CIDR  
+ 56  kubectl apply -f calico.yaml 
+
+   47  history
+
+
+
+
+
+  1  sudo apt update
+    2  sudo apt upgrade -y
+    3  sudo reboot
+    4  free
+    9  sudo tee /etc/modules-load.d/containerd.conf << EOF
+   10  overlay
+   11  br_netfilter
+   12  EOF
+   13  sudo modprobe overlay
+   14  sudo modprobe br_netfilter
+   15  sudo tee  /etc/sysctl.d/kubernetes.conf <<EOF
+   16  net.bridge.bridge-nf-call-ip6tables=1
+   17  net.bridge.bridge-nf-call-iptables=1
+   18  net.ipv4.ip_forward=1
+   19  EOF
+   20  sudo sysctl --system
+   21  sudo apt install -y containerd.io
+   22  containerd config default | sudo tee /etc/containerd/config.toml > /dev/null 2>&1
+   23  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+   24  sudo systemctl restart containerd
+   25  sudo systemctl enable containerd
+   26  sudo apt-mark hold kubelet kubeadm kubectl
+   28  sudo kubeadm join 3.12.49.96:6443 --token pr6k0i.qmac9ej3dc7otjr9 	--discovery-token-ca-cert-hash sha256:1ab895acab5a03c97baf91a0f281c1adffa5095051c6c6b84e3a294ba59446d3
+   29  history
